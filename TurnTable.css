@@ -1,0 +1,253 @@
+body{
+	font-family:calibri,sans-serif;
+}
+
+#tt_table{
+	position: relative;
+	margin: auto;
+	height: 400px;
+	width: 450px;
+	background-color: orange;
+	border-radius: 10px;
+}
+
+/* SWITCH */
+
+#tt_button{
+	display:none;
+}
+
+#tt_switch {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	height: 32px;
+	width: 64px;
+	background-color: #ffdd00;
+	border-radius: 4px;
+}
+
+#tt_switch > div:nth-child(1) {
+	position: absolute;
+	top: 8px;
+	left: 10px;
+	height: 0px;
+	width: 0px;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 14px solid orange;
+}
+
+#tt_switch > div:nth-child(2) {
+	position: absolute;
+	background-color: orange;
+	top: 8px;
+	left: 39px;
+	height: 16px;
+	width: 16px;
+}
+
+#tt_switch > div:nth-child(3) {
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	height: 30px;
+	width: 30px;
+	background-color: #dd6600;
+	border-radius: 4px;
+	transition: all 200ms ease-in-out;
+}
+
+#tt_button:checked + label > #tt_switch > div:nth-child(3) {
+	left: 33px;
+}
+
+/* /SWITCH */
+
+/* SLIDER */
+
+#tt_slider {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	height: 128px;
+	width: 32px;
+	background-color: #ffdd00;
+	border-radius: 4px;
+}
+
+#tt_slider > div:nth-child(1) {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	height: 98px;
+	width: 2px;
+	background-color: orange;
+	border-radius: 4px;
+}
+
+#tt_slider > div:nth-child(2) {
+	position: absolute;
+	top: 64px;
+	left: 1px;
+	height: 16px;
+	width: 30px;
+	background-color: #dd6600;
+	border-radius: 4px;
+}
+
+/* /SLIDER */
+
+/* ARM */
+
+#tt_table > div:nth-child(1) {
+	position: absolute;
+	background-color: darkgrey;
+	border: 1px solid black;
+	top: 29px;
+	left: 319px;
+	height: 100px;
+	width: 100px;
+	border-radius: 50px;
+}
+
+#tt_arm{
+	position: absolute;
+	top: -170px;
+	left: 320px;
+	height: 500px;
+	width: 100px;
+	float: left;
+	z-index: 2;
+	transform: rotate(0deg);
+	transition: all 1s ease-in-out;
+}
+
+#tt_button:checked ~ #tt_arm{
+	animation: hin 500ms ease-in,
+			   weiter 10s linear 500ms infinite;
+	-webkit-animation: hin 500ms ease-in,
+					   weiter 10s linear 500ms infinite;
+}
+
+@keyframes hin {
+	from{transform:rotate(0deg);}
+	to	{transform:rotate(5deg);}
+}
+
+@keyframes weiter {
+	0%	{transform:rotate(5deg);}
+	10%	{transform:rotate(5deg);}
+	80% {transform:rotate(36deg);}
+	90% {transform:rotate(36deg);}
+	100%{transform:rotate(5deg);}
+}
+
+#tt_arm > div:nth-child(1){
+	position: absolute;
+	background-color: gray;
+	top: 200px;
+	left: 45px;
+	height: 250px;
+	width: 10px;
+	border-radius: 5px;
+}
+
+#tt_arm > div:nth-child(1) > div:nth-child(1) {
+	position: absolute;
+	background-color: #3f3f3f;
+	top: -16px;
+	left: -10px;
+	height: 30px;
+	width: 30px;
+}
+
+#tt_arm > div:nth-child(1) > div:nth-child(2){
+	position: absolute;
+	background-color: gray;
+	transform: rotate(32deg);
+	top: 239px;
+	left: -11px;
+	height: 50px;
+	width: 10px;
+	border-radius: 5px;
+	z-index: 1;
+}
+
+#tt_arm > div:nth-child(1) > div:nth-child(3){
+	position: absolute;
+	background-color: #3f3f3f;
+	transform: rotate(32deg);
+	top: 258px;
+	left: -25px;
+	height: 40px;
+	width: 20px;
+	z-index: 1;
+}
+
+#tt_arm > div:nth-child(2){
+	position: absolute;
+	background-color: black;
+	top: 230px;
+	left: 30px;
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+}
+
+/* /ARM */
+
+/* SPINNER */
+
+#tt_spinner{
+	position: absolute;
+	float: left;
+	left: 30px;
+	top: 30px;
+	width: 340px;
+	height: 340px;
+	background: black;
+	border-radius: 168px;
+	transform: rotate(360deg);
+	transition: all 2s ease-out;
+}
+
+#tt_button:checked ~ #tt_spinner{
+	animation: drehen 2727ms ease-in 1s,
+			   drehen 1818ms linear 3727ms infinite;
+	-webkit-animation: drehen 2727ms ease-in 1s,
+					   drehen 1818ms linear 3727ms infinite;
+}
+
+@keyframes drehen {
+	from{transform:rotate(0deg);}
+	to	{transform:rotate(360deg);}
+}
+
+#tt_spinner > div{
+	position: absolute;
+	background-color: white;
+	margin: 120px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+}
+
+#tt_spinner > div > div{
+	position: absolute;
+	background-color: grey;
+	margin: 47px;
+	height: 6px;
+	width: 6px;
+	border-radius: 3px;
+}
+
+#tt_spinner > div > div > span{
+	position: absolute;
+	color: black;
+	font-size: 24px;
+	top: -28px;
+	left: -32px;
+}
+
+/* /SPINNER */

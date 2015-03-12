@@ -1,10 +1,12 @@
 body{
 	font-family:calibri,sans-serif;
+	background-color: #eee;
 }
 
 #tt_table{
 	position: relative;
-	margin: auto;
+	margin-left: 100px;
+	margin-top: 100px;
 	height: 400px;
 	width: 450px;
 	background-color: orange;
@@ -124,18 +126,31 @@ body{
 }
 
 #tt_button:checked ~ #tt_arm{
-	animation: hin 500ms ease-in,
-			   weiter 10s linear 500ms infinite;
-	-webkit-animation: hin 500ms ease-in,
-					   weiter 10s linear 500ms infinite;
+	animation: positionarm 500ms ease-in,
+			   looparm 10s linear 500ms infinite;
+	-webkit-animation: positionarm 500ms ease-in,
+					   looparm 10s linear 500ms infinite;
 }
 
-@keyframes hin {
+@keyframes positionarm {
 	from{transform:rotate(0deg);}
 	to	{transform:rotate(5deg);}
 }
 
-@keyframes weiter {
+@keyframes looparm {
+	0%	{transform:rotate(5deg);}
+	10%	{transform:rotate(5deg);}
+	80% {transform:rotate(36deg);}
+	90% {transform:rotate(36deg);}
+	100%{transform:rotate(5deg);}
+}
+
+@-webkit-keyframes positionarm {
+	from{transform:rotate(0deg);}
+	to	{transform:rotate(5deg);}
+}
+
+@-webkit-keyframes looparm {
 	0%	{transform:rotate(5deg);}
 	10%	{transform:rotate(5deg);}
 	80% {transform:rotate(36deg);}
@@ -207,19 +222,24 @@ body{
 	width: 340px;
 	height: 340px;
 	background: black;
-	border-radius: 168px;
+	border-radius: 170px;
 	transform: rotate(360deg);
 	transition: all 2s ease-out;
 }
 
 #tt_button:checked ~ #tt_spinner{
-	animation: drehen 2727ms ease-in 1s,
-			   drehen 1818ms linear 3727ms infinite;
-	-webkit-animation: drehen 2727ms ease-in 1s,
-					   drehen 1818ms linear 3727ms infinite;
+	animation: turn 4s cubic-bezier(.3, 0, .3, .1) 1s,
+			   turn 3s linear 5s infinite;
+	-webkit-animation: turn 4s cubic-bezier(.3, 0, .3, .1) 1s,
+					   turn 3s linear 5s infinite;
 }
 
-@keyframes drehen {
+@keyframes turn {
+	from{transform:rotate(0deg);}
+	to	{transform:rotate(360deg);}
+}
+
+@-webkit-keyframes turn {
 	from{transform:rotate(0deg);}
 	to	{transform:rotate(360deg);}
 }
@@ -245,9 +265,11 @@ body{
 #tt_spinner > div > div > span{
 	position: absolute;
 	color: black;
-	font-size: 24px;
-	top: -28px;
-	left: -32px;
+	font-size: 16px;
+	text-align: center;
+	top: -24px;
+	left: -48px;
+	width: 100px;
 }
 
 /* /SPINNER */

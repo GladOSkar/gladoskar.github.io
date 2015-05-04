@@ -31,6 +31,22 @@
   <div id=seite>
    <div id="cont">
     <h1>Blah</h1>
+
+	   <p>Fibonacci: fib( <input type="text" id="fibin" style="width:25px;"> ) <input type="button" id="fiboButton" value="="> <input type="text" id="fibout">.</p>
+	   <script>
+		   document.getElementById('fiboButton').addEventListener('click', function() {
+			   document.getElementById('fibout').value = fib(document.getElementById('fibin').value);
+		   }, false);
+
+		   function fib(n) {
+			   if (n < 2) {
+				   return 1;
+			   } else {
+				   return fib(n-1) + fib(n-2);
+			   };
+		   };
+
+	   </script>
 <p>
 Lorem ipsum dolor sit amet consectetuer laoreet dis sed ut In. Hendrerit augue mollis eleifend justo urna Nam eros tincidunt leo Pellentesque. Vestibulum orci justo elit et In ut ac Integer adipiscing cursus. Et quis.
 </p><p>

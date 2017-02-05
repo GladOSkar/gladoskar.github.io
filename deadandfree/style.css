@@ -142,6 +142,7 @@ header {
 	z-index: 4;
 	text-align: left;
 	vertical-align: top;
+	overflow: hidden;
 }
 .platte.card .closebtn {
 	display: block;

@@ -75,11 +75,7 @@ var langde = {
 	addresstext: "Unser Laden befindet sich hier:"
 }
 
-if (!(localStorage.getItem("language"))) {
-	localStorage.setItem("language", window.navigator.language.slice(0, 2))
-}
-
-var lang = window["lang" + localStorage.getItem("language")]; //copies the language pack into the main language object
+var lang = window["lang" + ( localStorage.getItem("language") || window.navigator.language.slice(0,2) )]; //copies the language pack into the main language object
 
 function chlang() {
 	if (lang.id == "en")
@@ -90,39 +86,41 @@ function chlang() {
 	location.reload();
 }
 
-function getOffset(el) {
-    var _x = 0;
-    var _y = 0;
-    while(el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
-        _x += el.offsetLeft - el.scrollLeft;
-        _y += el.offsetTop - el.scrollTop;
-        el = el.offsetParent;
-    }
-    return {top: _y,left: _x};
+function scrolltop() {
+	return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 }
 
-var oldRect; //stores the previous position of the open card for the closing animation
+function scrollleft() {
+	return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+}
 
-function expand(platte) { //opening animation for cards
-	var offset = getOffset(platte); //get start position
-	var rect = platte.getBoundingClientRect(); //get start dimensions
-	console.log(offset);
-	console.log(rect);
-	oldRect = { //store the previous position of the open card for the closing animation
-		top: offset.top,
-		left: offset.left,
-		height: rect.height,
-		width: rect.width
-	}
-	var card = platte.cloneNode(true); //create a clone that can be positioned absolute on the page
-	card.classList.add("card"); //add the class for opened cards
-	card.style.top = offset.top + "px"; //put the clone to the starting position
-	card.style.left = offset.left + "px";
-	card.style.height = rect.height + "px"; //set the clones starting dimensions
-	card.style.width = rect.width + "px";
-	card.onclick = false; //remove the event listener
-	document.body.appendChild(card); //paint it to the dom
-	card.style.transition = "all .4s ease-in-out"; //add the transition now so it doesn't move on the first paint
+function getOffset(el) {
+	var top, left, rect = el.getBoundingClientRect();
+	
+	top = rect.top + scrolltop();
+	left = rect.left + scrollleft();
+	
+	return {top: top, left:left};
+}
+
+var oldRect;	//stores the previous position of the open card for the closing animation
+
+function expand(platte) {							//opening animation for cards
+	
+	oldRect = platte.getBoundingClientRect();		//get start dimensions, also stores the previous position of the open card for the closing animation
+	
+	var card = platte.cloneNode(true);				//create a clone that can be positioned absolute on the page
+	
+	card.classList.add("card");						//add the class for opened cards
+	card.style.top = oldRect.top + "px";			//put the clone to the starting position
+	card.style.left = oldRect.left + "px";
+	card.style.height = oldRect.height + "px";		//set the clones starting dimensions
+	card.style.width = oldRect.width + "px";
+	card.onclick = false;							//remove the event listener
+	document.body.appendChild(card);				//paint it to the dom
+	
+	card.style.transition = "all .4s ease-in-out";	//add the transition now so it doesn't move on the first paint
+	
 	setTimeout(function () { //move clone to destination position, dimensions & Shadows (could be redone with class) (delayed to wait until transition is set)
 		card.style.boxShadow = "0px 0px 160px 0px";
 		card.style.left = "84px";
@@ -195,33 +193,33 @@ function adjustHeadings() { //Adjust section Headings' CSS to make them be under
 }
 
 var navsticks = 0, updatenav = 1; //remembers previous sticky status; so that the class only has to me added/removed when the threshold is passed
-var opnas, activeopnaindex, opnaoffsets = [];
+var opnas = [], activeopnaindex, opnaoffsets = [];
 var headerheight = 0;
 
 window.addEventListener("resize", function() {
 	adjustHeadings();
 	headerheight = document.querySelector("header").offsetHeight;
 	for (var i = 0; i < opnas.length; i++) {
-		opnaoffsets[i + 1] = getOffsetTop(opnas[i]);
+		opnaoffsets[i + 1] = getOffset(opnas[i]).top;
 	}
 });
 
 window.onscroll = function() {
-	if ((document.body.scrollTop > headerheight) && (navsticks == 0)) { //for the sticky nav; may be obsolete when moving nav to top
+	if ((scrolltop() > headerheight) && (navsticks == 0)) { //for the sticky nav; may be obsolete when moving nav to top
 		document.querySelector("nav").classList.add("stickynav");
 		navsticks = 1;
-	} else if ((document.body.scrollTop <= headerheight) && (navsticks == 1)) {
+	} else if ((scrolltop() <= headerheight) && (navsticks == 1)) {
 		document.querySelector("nav").classList.remove("stickynav");
 		navsticks = 0;
 	};
 	
-	if (updatenav && (document.body.scrollTop + 21 != opnaoffsets[activeopnaindex])) {
-		if (document.body.scrollTop + 21 < opnaoffsets[activeopnaindex]) {
+	if (updatenav && (scrolltop() + 21 != opnaoffsets[activeopnaindex])) {
+		if (scrolltop() + 21 < opnaoffsets[activeopnaindex]) {
 			activeopnaindex--;
 			try { document.body.querySelector("nav a.active").classList.remove("active"); } catch(err) {};
 			if (activeopnaindex)
 				document.querySelector("nav a:nth-child(" + (activeopnaindex) + ")").classList.add("active");
-		} else if (document.body.scrollTop + 21 > opnaoffsets[activeopnaindex + 1]) {
+		} else if (scrolltop() + 21 > opnaoffsets[activeopnaindex + 1]) {
 			activeopnaindex++;
 			try { document.body.querySelector("nav a.active").classList.remove("active"); } catch(err) {};
 			if (activeopnaindex)
@@ -247,7 +245,7 @@ function smoothScroll(did) { //scrools smoothly to the top of the element with I
 	try { document.body.querySelector("nav a.active").classList.remove("active"); } catch(err) {};
 	document.getElementById(did).classList.add("active");  //make the clicked nav-Element stay visually active
 	
-	var start = window.pageYOffset, //get start position (current scroll position)
+	var start = scrolltop(), //get start position (current scroll position)
 		dest = document.getElementById(did).offsetTop; //get destination position (absolute top of dest element)
 	if (dest > (document.body.offsetHeight - window.innerHeight)) { //if the destination view is past the end of the page, only move to the end of the page, so the animation does not end abruptly
 		dest = (document.body.offsetHeight - window.innerHeight)

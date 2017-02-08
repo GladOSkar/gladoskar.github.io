@@ -20,10 +20,14 @@
 				</div>
 			</header>
 			<nav>
-				<a onclick="smoothScroll('records')"><script>document.write(lang.records)</script></a>
-				<a onclick="smoothScroll('about')"><script>document.write(lang.about)</script></a>
-				<a onclick="smoothScroll('contact')"><script>document.write(lang.contact)</script></a>
-				<a onclick="smoothScroll('location')"><script>document.write(lang.location)</script></a>
+				<div class="hamburger" onclick="foldnav(this)">
+					<div>|||</div>
+				</div>
+				<a onclick="foldnav(this)"				class="menu">			<script>document.write(lang.menu)		</script></a>
+				<a onclick="smoothScroll('records')"	class="recordslink">	<script>document.write(lang.records)	</script></a>
+				<a onclick="smoothScroll('about')"		class="aboutlink">		<script>document.write(lang.about)		</script></a>
+				<a onclick="smoothScroll('contact')"	class="contactlink">	<script>document.write(lang.contact)	</script></a>
+				<a onclick="smoothScroll('location')"	class="locationlink">	<script>document.write(lang.location)	</script></a>
 			</nav>
 			<div></div>
 			<section id="news">
@@ -45,7 +49,6 @@
 							<h2>LIEBLINGSSONGS</h2>
 						</div>
 					</div>
-					<script async>paintPlatten();</script>
 					<!--<div id="searchbutton" onclick="searchclick();">
 						<script>document.write(lang.gosearch)</script>
 					</div>-->
@@ -63,12 +66,15 @@
 					<div class="persons">
 						<div>
 							<img src="http://www.collegesoccerpanels.com/wp-content/uploads/2014/04/headshot_male_290x281.png">
+							<span>Volker</span>
 						</div>
 						<div>
 							<img src="http://www.collegesoccerpanels.com/wp-content/uploads/2014/04/headshot_female_290x281.png">
+							<span>Katharina</span>
 						</div>
 						<div>
 							<img src="http://www.collegesoccerpanels.com/wp-content/uploads/2014/04/headshot_male_290x281.png">
+							<span>Tim</span>
 						</div>
 					</div>
 				</div>
@@ -116,5 +122,6 @@
 				</section>
 			</footer>
 		</main>
+		<script async src="platten.js"></script>
 	</body>
 </html>

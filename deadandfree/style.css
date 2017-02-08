@@ -11,8 +11,11 @@ body {
 }
 a {
 	text-decoration: none;
-	color: #fff;
+	color: #000;
 	cursor: pointer;
+}
+footer a {
+	color: #fff;
 }
 main {
 	position: relative;
@@ -34,30 +37,38 @@ footer > section, div.header > section {
 	max-width: 800px;
 	margin: auto;
 }
+
+/* ############################################################################################### */
+
 .heading {
 	position: relative;
-	width: 100%;
+	float: left;
+	width: 100vw;
+	max-width: 770px;
 	background: #000;
 	margin-left: 50%;
 	height: 42px;
 	font-size: 20px;
 	transform: translateX(-50%);
-	padding-left: calc((100vw - 100%)/2);
-	padding-right: calc((100vw - 100%)/2);
+	padding-left: calc((100vw - 770px)/2);
+	padding-right: calc((100vw - 770px)/2);
 }
 .heading span {
 	position: absolute;
 	display: inline-block;
-	padding: 10px 16px;
+	padding: 10px 0px;
 	text-align: center;
+	white-space: nowrap;
 	z-index: 3000;
 }
 nav {
+	position: relative;
 	display: flex;
 	justify-content: space-around;
 	align-items: stretch;
 	align-content: stretch;
-	width: 100%;
+	max-width: 770px;
+	width: 100vw;
 	background: #000;
 	margin-left: 50%;
 	margin-bottom: 8px;
@@ -66,11 +77,12 @@ nav {
 	font-size: 20px;
 	color: #fff;
 	transform: translateX(-50%);
-	padding-left: calc((100vw - 800px)/2);
-	padding-right: calc((100vw - 800px)/2);
+	padding-left: calc((100vw - 770px) / 2);
+	padding-right: calc((100vw - 770px) / 2);
 	z-index: 1000;
 }
 nav a {
+	position: relative;
 	width: auto;
 	display: inline-block;
 	flex-grow: 1;
@@ -81,24 +93,14 @@ nav a {
 	color: #fff;
 	z-index: 2000;
 }
-nav a:hover,
-nav a:active,
-nav a.active {
+nav a:hover, nav a:active, nav a.active {
 	background: #fff;
 	cursor: pointer;
 	color: #000;
 }
 @media (max-width:800px) {
-    nav.stickynav {
-        width: 100vw;
-    }
     main {
         overflow-x: hidden;
-    }
-}
-@media (min-width:801px) {
-    nav.stickynav {
-        width: 800px;
     }
 }
 nav.stickynav {
@@ -113,10 +115,81 @@ nav.stickynav + div {
 h2 {
 	font-family: Montserrat;
 }
+.menu, .hamburger {
+	display: none;
+}
+@media (max-width: 500px) {
+	.heading span {
+		margin-left: 0px !important;
+		width: 100vw !important;
+		background: #000 !important;
+		color: #fff !important;
+	}
+	nav {
+		position: relative;
+		display: block;
+		height: 42px !important;
+		overflow: hidden;
+		background: #000;
+		height: auto;
+		color: #fff;
+		transition: all .2s ease-in-out;
+	}
+	nav.open {
+		height: 214px !important;
+		margin-bottom: -164px !important;
+	}
+	nav a {
+		display: block;
+		width: 100vw;
+		background: #000;
+		color: #fff;
+	}
+	nav a.active {
+		position: absolute;
+		top: 0;
+		display: block;
+		background: #000;
+		color: #fff;
+		z-index: 4000;
+	}
+	.menu {
+		display: block;
+	}
+	.hamburger {
+		display: block;
+		position: absolute;
+		color: #fff;
+		z-index: 5000;
+		height: 42px;
+		width: 100vw;
+		text-align: right;
+		cursor: pointer;
+	}
+	.hamburger > div {
+		position: absolute;
+		font-size: 24px;
+		height: 32px;
+		width: 20px;
+		top: 4px;
+		right: 20px;
+		transform: rotate(90deg);
+		transition: all .2s ease-in-out;
+	}
+	nav.open .hamburger > div {
+		transform: rotate(-90deg);
+	}
+}
+
+/* ############################################################################################### */
+
 #recordgallery {
 	position: relative;
 	width: 100%;
 	z-index: 1;
+}
+#recordgallery > div {
+	text-align: center;
 }
 header {
 	margin: 0px;
@@ -126,6 +199,7 @@ header {
 	position: relative;
 	display: inline-block;
 	width: 32%;
+	min-width: 230px;
 	text-align: center;
 	vertical-align: text-top;
 	z-index: 0;
@@ -139,7 +213,7 @@ header {
 	display: block;
 	background: #fff;
 	margin: 0px;
-	z-index: 4;
+	z-index: 6000;
 	text-align: left;
 	vertical-align: top;
 	overflow: hidden;
@@ -172,7 +246,7 @@ header {
 .platte.card .desc {
 	display: inline-block;
 	font-size: 32px;
-	margin-top: 42px;
+	margin: 42px;
 	padding: 0px;
 	float: left;
 	width: auto;
@@ -219,6 +293,29 @@ header {
 	cursor: pointer;
 	background: #eee;
 }
+.platte.card.expanded {
+	box-shadow: 0px 0px 160px 0px;
+	left: 84px !important;
+	top: 84px !important;
+	width: calc(100% - 168px) !important;
+	height: calc(100% - 168px) !important;
+}
+@media (max-width: 500px) {
+	.platte.card.expanded {
+		left: 21px !important;
+		top: 21px !important;
+		width: calc(100% - 42px) !important;
+		height: calc(100% - 42px) !important;
+	}
+	.platte.card.expanded .desc {
+		font-size: 24px;
+	}
+}
+
+
+
+/* ############################################################################################### */
+
 #logo {
 	position: relative;
 	font-family: "LimeLight";
@@ -259,26 +356,42 @@ header {
 #logo .dot.r {
 	right: 0px;
 }
+
+/* ############################################################################################### */
+
 img[src="img/store.jpg"] {
-	width: 50%;
+	vertical-align: top;
+	width: 49%;
+	min-width: 230px;
 	display: inline-block;
+	margin: auto;
 }
 #about p {
 	display: inline-block;
-	width: calc(50% - 25px);
-	margin: 0px 0px 0px 20px;
-	vertical-align: top;
+	width: calc(49% - 16px);
+	padding: 16px 0px 16px 16px;
+	min-width: 230px;
+	margin: auto;
 	text-align: justify;
 }
+@media (max-width: 600px) {
+	img[src="img/store.jpg"] {
+		width: 100%;
+	}
+	#about p {
+		width: calc(100% - 32px);
+		padding: 16px;
+	}
+}
 .persons {
-	margin-top: 42px;
+	padding-top: 42px;
 	width: 100%;
-	height: 200px;
 	text-align: center;
 }
 .persons > div {
 	width: 32%;
-	text-align: center;
+	min-width: 230px;
+	height: auto;
 	display: inline-block;
 	height: auto;
 }
@@ -313,4 +426,11 @@ h1 {
 
 #news p {
 	text-align: center;
+}
+
+#about .content > div {
+	position: relative;
+	margin: auto;
+	display: block;
+	height: auto;
 }

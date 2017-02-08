@@ -37,6 +37,7 @@ var database = {
 
 var langen = {
 	id: "en",
+	menu: "MENU",
 	records: "RECORDS",
 	about: "ABOUT US",
 	contact: "CONTACT",
@@ -49,7 +50,7 @@ var langen = {
 	close: "CLOSE",
 	saletext: "We'll close during the next months, until then our inventory is on sale!",
 	gosearch: "Search our inventory...",
-	abouttext: "We are a little Record Store in Berlin-Schöneberg. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+	abouttext: "We are a little Record Store in Berlin-Schöneberg. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
 	contacttext: "You want to ask us a question, reserve a record or talk to us about something else? Here is our contact info:",
 	phone: "Phone: +49 30 2151449",
 	addresstext: "Our store is located here:"
@@ -57,6 +58,7 @@ var langen = {
 
 var langde = {
 	id: "de",
+	menu: "MENÜ",
 	records: "PLATTEN",
 	about: "ÜBER UNS",
 	contact: "KONTAKT",
@@ -69,7 +71,7 @@ var langde = {
 	close: "SCHLIEßEN",
 	saletext: "In den nächsten Monaten werden wir schließen, bis dahin sind alle Angebote stark reduziert!",
 	gosearch: "Durchsuchen Sie unser Inventar...",
-	abouttext: "Wir sind ein kleiner Schallplattenladen in Berlin-Schöneberg. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+	abouttext: "Wir sind ein kleiner Schallplattenladen in Berlin-Schöneberg. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
 	contacttext: "Sie wollen uns eine Frage stellen, eine Platte reservieren oder wegen etwas anderem mit uns sprechen? Hier sind unsere Kontaktdaten:",
 	phone: "Telefon: 030 2151449",
 	addresstext: "Unser Laden befindet sich hier:"
@@ -84,6 +86,14 @@ function chlang() {
 		localStorage.setItem("language","en");
 
 	location.reload();
+}
+
+function foldnav(el) {
+	if (el.parentElement.classList.contains("open")) {
+		el.parentElement.classList.remove("open");
+	} else {
+		el.parentElement.classList.add("open");
+	}
 }
 
 function scrolltop() {
@@ -103,105 +113,44 @@ function getOffset(el) {
 	return {top: top, left:left};
 }
 
-var oldRect;	//stores the previous position of the open card for the closing animation
-
-function expand(platte) {							//opening animation for cards
-	
-	oldRect = platte.getBoundingClientRect();		//get start dimensions, also stores the previous position of the open card for the closing animation
-	
-	var card = platte.cloneNode(true);				//create a clone that can be positioned absolute on the page
-	
-	card.classList.add("card");						//add the class for opened cards
-	card.style.top = oldRect.top + "px";			//put the clone to the starting position
-	card.style.left = oldRect.left + "px";
-	card.style.height = oldRect.height + "px";		//set the clones starting dimensions
-	card.style.width = oldRect.width + "px";
-	card.onclick = false;							//remove the event listener
-	document.body.appendChild(card);				//paint it to the dom
-	
-	card.style.transition = "all .4s ease-in-out";	//add the transition now so it doesn't move on the first paint
-	
-	setTimeout(function () { //move clone to destination position, dimensions & Shadows (could be redone with class) (delayed to wait until transition is set)
-		card.style.boxShadow = "0px 0px 160px 0px";
-		card.style.left = "84px";
-		card.style.top = "84px";
-		card.style.width = "calc(100% - 168px)";
-		card.style.height = "calc(100% - 168px)";
-	}, 10);
-}
-
-function retract(platte) { //closing animation
-	card = document.querySelector("body > .platte.card"); //find open card
-	//card.classList.remove("card");
-	card.style.top = oldRect.top + "px"; //move back to previously saved position
-	card.style.left = oldRect.left + "px";
-	card.style.height = oldRect.height + "px"; //set back to previously saved dimensions
-	card.style.width = oldRect.width + "px";
-	setTimeout(function() {
-		document.body.removeChild(card); //delete clone
-	}, 410);
-}
-
-function paintPlatte(info, parent) {
-	var html = [
-		"<div class=\"platte\" onclick=\"expand(this)\">\n<div class=\"cover\" style=\"background:url(",
-		info.url,
-		");\"></div>\n<div class=\"desc\">\n<span class=\"artist\">",
-		info.artist,
-		"</span>\n<span class=\"album\">",
-		info.album,
-		"</span>\n</div>\n<button class=\"closebtn\" onclick=\"retract(this)\">",
-		lang.close,
-		"</button>\n</div>\n"
-	].join("");
-	parent.innerHTML += html;
-}
-
-function paintPlatten() { //will add the necessary html for every record into its respective container
-	database.lieblingsplatten.forEach(function (platte) {
-		paintPlatte(platte, window.lieblingsplatten);
-	});
-
-	database.lieblingssongs.forEach(function (platte) {
-		paintPlatte(platte, window.lieblingssongs);
-	});
-}
-
-function adjustHeadings() { //Adjust section Headings' CSS to make them be underneath their nav counterpart
+function adjustHeadings() {			//Adjust section Headings' CSS to make them be underneath their nav counterpart
 	var navEls = document.querySelectorAll("nav a"),
 		navElWidths = [],
 		hereOffset = 0,
 		navElOffsets = [];
 
-	for (var i = 0; i < navEls.length; i++) {
-		navElWidths[i] = navEls[i].offsetWidth;
+	for (var i = 0; i < navEls.length - 1; i++) {
+		navElWidths[i] = navEls[i + 1].offsetWidth;
 		navElOffsets[i] = hereOffset;
 		hereOffset += navElWidths[i];
 	};
-
-	console.log(navElWidths);
-	console.log(navElOffsets);
 
 	var headEls = document.querySelectorAll(".heading span"),
 		navWidth = document.querySelector("nav").offsetWidth;
 	
 	for (var i = 0; i < headEls.length; i++) {
-		headEls[i].style.marginLeft = ((navElOffsets[i] / navWidth) * 100) + "%";
-		headEls[i].style.width = "calc(" + ((navElWidths[i] / navWidth) * 100) + "% - 32px)";
+		headEls[i].style.marginLeft = navElOffsets[i] + "px";
+		headEls[i].style.width = navElWidths[i] + "px";
 	};
 
 }
 
-var navsticks = 0, updatenav = 1; //remembers previous sticky status; so that the class only has to me added/removed when the threshold is passed
-var opnas = [], activeopnaindex, opnaoffsets = [];
+var navsticks = 0; //remembers previous sticky status; so that the class only has to me added/removed when the threshold is passed
+var opnas = [], activeopnaindex = 0, opnaoffsets = [0];
 var headerheight = 0;
 
-window.addEventListener("resize", function() {
-	adjustHeadings();
+function realign() {
+	adjustHeadings(); //Adjust section Headings' CSS to make them be underneath their nav counterpart
+	
 	headerheight = document.querySelector("header").offsetHeight;
+	
 	for (var i = 0; i < opnas.length; i++) {
 		opnaoffsets[i + 1] = getOffset(opnas[i]).top;
 	}
+}
+
+window.addEventListener("resize", function() {
+	realign();
 });
 
 window.onscroll = function() {
@@ -213,37 +162,37 @@ window.onscroll = function() {
 		navsticks = 0;
 	};
 	
-	if (updatenav && (scrolltop() + 21 != opnaoffsets[activeopnaindex])) {
+	if (scrolltop() + 21 != opnaoffsets[activeopnaindex]) {
 		if (scrolltop() + 21 < opnaoffsets[activeopnaindex]) {
 			activeopnaindex--;
 			try { document.body.querySelector("nav a.active").classList.remove("active"); } catch(err) {};
 			if (activeopnaindex)
-				document.querySelector("nav a:nth-child(" + (activeopnaindex) + ")").classList.add("active");
+				document.querySelector("nav a:nth-child(" + (activeopnaindex + 2) + ")").classList.add("active");
 		} else if (scrolltop() + 21 > opnaoffsets[activeopnaindex + 1]) {
 			activeopnaindex++;
 			try { document.body.querySelector("nav a.active").classList.remove("active"); } catch(err) {};
 			if (activeopnaindex)
-				document.querySelector("nav a:nth-child(" + (activeopnaindex) + ")").classList.add("active");
+				document.querySelector("nav a:nth-child(" + (activeopnaindex + 2) + ")").classList.add("active");
 		}
 	}
 };
 
 window.onload = function() {
-	adjustHeadings(); //Adjust section Headings' CSS to make them be underneath their nav counterpart
-	
-	headerheight = document.querySelector("header").offsetHeight;
 	
 	opnas = document.body.querySelectorAll(".opnavanchor");
-	opnaoffsets[0] = 0;
-	for (var i = 0; i < opnas.length; i++) {
-		opnaoffsets[i + 1] = opnas[i].offsetTop;
-	}
-	activeopnaindex = 0;
+	realign();
+	
+	paintPlatten();
+	
+	realign();
 };
 
 function smoothScroll(did) { //scrools smoothly to the top of the element with ID "did" (="destinationID")
+	
+	try { document.body.querySelector("nav.open").classList.remove("open"); } catch(err) {};
+	
 	try { document.body.querySelector("nav a.active").classList.remove("active"); } catch(err) {};
-	document.getElementById(did).classList.add("active");  //make the clicked nav-Element stay visually active
+	document.querySelector("." + did + "link").classList.add("active");  //make the clicked nav-Element stay visually active
 	
 	var start = scrolltop(), //get start position (current scroll position)
 		dest = document.getElementById(did).offsetTop; //get destination position (absolute top of dest element)

@@ -1,37 +1,50 @@
 var database = {
 	"lieblingsplatten": [
 		{
-			"url": "http://lorempixel.com/160/160/abstract/1",
-			"artist": "Die Schnullibullis",
-			"album": "Go Away!"
+			"url": "img/AlbumArt/sampha.png",
+			"artist": "Sampha",
+			"album": "Process",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/_NSuIYwBxu4"
 		},
 		{
-			"url": "http://lorempixel.com/160/160/abstract/2",
-			"artist": "Die Ostfriesen",
-			"album": "Moin Moin"
+			"url": "img/AlbumArt/fink.png",
+			"artist": "Fink",
+			"album": "Fink's Sunday Night Blues Club, Vol. 1",
+			"text": "Vinyl leider erst ab 14.4.2017",
+			"vid": "https://www.youtube.com/embed/j63QBuIA4wM"
 		},
 		{
-			"url": "http://lorempixel.com/160/160/abstract/3",
-			"artist": "Die Soundsos",
-			"album": "Wie geht's?"
+			"url": "img/AlbumArt/nikkilane.png",
+			"artist": "Nikki Lane",
+			"album": "Highway Queen",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/zcvQL8_ZP20"
+		},
+		{
+			"url": "img/AlbumArt/michaelkiwanuka.png",
+			"artist": "Michael Kiwanuka",
+			"album": "Love And Hate",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/aMZ4QL0orw0"
+		},
+		{
+			"url": "img/AlbumArt/leonardcohen.png",
+			"artist": "Leonard Cohen",
+			"album": "You Want It Darker",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/v0nmHymgM7Y"
+		},
+		{
+			"url": "img/AlbumArt/lutherdickinson.png",
+			"artist": "Luther Dickinson",
+			"album": "Blues & Ballads (A Folksinger's Songbook)",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/8KWk-Dso3HA"
 		}
 	],
 	"lieblingssongs": [
-		{
-			"url": "http://lorempixel.com/160/160/abstract/4",
-			"artist": "Die Schnullibullis",
-			"album": "Go Away!"
-		},
-		{
-			"url": "http://lorempixel.com/160/160/abstract/5",
-			"artist": "Die Ostfriesen",
-			"album": "Moin Moin"
-		},
-		{
-			"url": "http://lorempixel.com/160/160/abstract/6",
-			"artist": "Die Soundsos",
-			"album": "Wie geht's?"
-		}
+		
 	]
 }
 
@@ -46,11 +59,21 @@ var langen = {
 	favrecords: "OUR FAVORITE RECORDS",
 	favsongs: "OUR FAVORITE SONGS",
 	lang: "SEITE AUF DEUTSCH",
-	sale: "SALE!",
 	close: "CLOSE",
-	saletext: "We'll close during the next months, until then our inventory is on sale!",
+	newsh: "WE'RE STILL HERE!",
+	newstext: "	And we have a new website!<br><br> \
+				That’s the good news.<br><br> \
+				The maybe less good news is:<br><br> \
+				We won’t be here forever (as a lot of people were assuming).<br><br> \
+				Sometime in early 2018 MR DEAD & MRS FREE will close this door forever after 35 years in business.<br><br> \
+				So come here while you can, there are lots of special offers and we are selling parts of our own collections, too.",
 	gosearch: "Search our inventory...",
-	abouttext: "We are a little Record Store in Berlin-Schöneberg. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+	newstuffpdf: "New in our range [pdf]",
+	abouttext: "MR DEAD & MRS FREE have been selling records for 34 years now.<br><br> \
+				We sold records before there were CDs or MPs3s or streaming.<br><br> \
+				And even in the darkest days of the 90s when CDs seemed to be the only medium in the market, we have always had at least 50% of our turnover with Vinyl.<br><br> \
+				Now, with Vinyl “booming” again, we do what we have always done: We sell music (also on CD).<br><br> \
+				Sometimes trendy, sometimes obscure, some timeless classics, some new stuff we keep discovering.",
 	contacttext: "You want to ask us a question, reserve a record or talk to us about something else? Here is our contact info:",
 	phone: "Phone: +49 30 2151449",
 	addresstext: "Our store is located here:"
@@ -67,11 +90,21 @@ var langde = {
 	favrecords: "UNSERE LIEBLINGPLATTEN",
 	favsongs: "UNSERE LIEBLINGSSONGS",
 	lang: "PAGE IN ENGLISH",
-	sale: "WIR MACHEN SCHLUSSVERKAUF!",
 	close: "SCHLIEßEN",
-	saletext: "In den nächsten Monaten werden wir schließen, bis dahin sind alle Angebote stark reduziert!",
+	newsh: "ES GIBT UNS NOCH!",
+	newstext: "	Und wir haben wieder eine Webseite!!<br><br> \
+				Das ist die gute Nachricht.<br><br> \
+				Die vielleicht nicht ganz so gute:<br><br> \
+				Es wird uns doch nicht ewig geben…(was ja viele Leute gehofft haben).<br><br> \
+				Anfang 2018 werden MR DEAD & MRS FREE voraussichtlich nach 35 Jahren den Laden dichtmachen.<br><br> \
+				Also kommt her, solange wir noch da sind. Es gibt jede Menge Sonderangebote und wir verkaufen auch Teile unserer eigenen Sammlungen.<br><br> \
+				<i>Wer sich berufen fühlt und der Wohnungsgesellschaft ein „Konzept“ vorlegen möchte, möge uns gerne kontaktieren.</i>",
 	gosearch: "Durchsuchen Sie unser Inventar...",
-	abouttext: "Wir sind ein kleiner Schallplattenladen in Berlin-Schöneberg. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+	newstuffpdf: "Neuheiten im Sortiment [pdf]",
+	abouttext: "MR DEAD & MRS FREE verkaufen Schallplatten seit 34 Jahren.<br><br> \
+				Als es noch keine CDs und MP3s und Streaming gab (und auch noch fast keine Computer und kein Internet…dafür Karteikarten und Fax-Geräte).<br><br> \
+				Als es in den 90ern – fast – nur noch CDs gab,  haben wir immer mindestens 50% vom Umsatz mit Schallplatten gemacht. Das kleine gallische Dorf des Vinyls in einem Meer von Silberlingen.<br><br> \
+				Und mit dem sogenannten Vinyl-Boom mache wir, was wir immer gemacht haben: Wir verkaufen Musik – auch auf CD. Im Trend oder abseits davon, die ewigen Klassiker und das Neue, das wir immer noch entdecken.",
 	contacttext: "Sie wollen uns eine Frage stellen, eine Platte reservieren oder wegen etwas anderem mit uns sprechen? Hier sind unsere Kontaktdaten:",
 	phone: "Telefon: 030 2151449",
 	addresstext: "Unser Laden befindet sich hier:"

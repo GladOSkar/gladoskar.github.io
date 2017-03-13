@@ -1,22 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
 @import url(https://fonts.googleapis.com/css?family=Limelight);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 * {
 	font-family: Montserrat;
 }
+
 body {
 	background: #559fea;
 	margin: 0px;
 	overflow-x: hidden;
 }
+
 a {
 	text-decoration: none;
 	color: #000;
 	cursor: pointer;
 }
+
 footer a {
 	color: #fff;
 }
+
 main {
 	position: relative;
     width: 100vw;
@@ -26,8 +31,8 @@ main {
 	background: #fff;
 	box-shadow: 0px 0px 16px 0px;
 	min-height: 100vh;
-	overflow: auto;
 }
+
 footer, div.header {
 	width: 100vw;
 	height: auto;
@@ -36,6 +41,7 @@ footer, div.header {
 	color: #fff;
 	transform: translateX(-50%);
 }
+
 footer > section, div.header > section {
 	max-width: 800px;
 	margin: auto;
@@ -45,17 +51,18 @@ footer > section, div.header > section {
 
 .heading {
 	position: relative;
-	float: left;
 	width: 100vw;
 	max-width: 770px;
 	background: #000;
 	margin-left: 50%;
+	color: #fff;
 	height: 42px;
 	font-size: 20px;
 	transform: translateX(-50%);
-	padding-left: calc((100vw - 770px)/2);
-	padding-right: calc((100vw - 770px)/2);
+	padding-left: calc((1400px - 770px)/2);
+	padding-right: calc((1400px - 770px)/2);
 }
+
 .heading span {
 	position: absolute;
 	display: inline-block;
@@ -64,26 +71,17 @@ footer > section, div.header > section {
 	white-space: nowrap;
 	z-index: 3000;
 }
+
 nav {
-	position: relative;
 	display: flex;
 	justify-content: space-around;
 	align-items: stretch;
 	align-content: stretch;
-	max-width: 770px;
-	width: 100vw;
-	background: #000;
-	margin-left: 50%;
 	margin-bottom: 8px;
-	height: 42px;
 	text-align: center;
-	font-size: 20px;
-	color: #fff;
-	transform: translateX(-50%);
-	padding-left: calc((100vw - 770px) / 2);
-	padding-right: calc((100vw - 770px) / 2);
 	z-index: 1000;
 }
+
 nav a {
 	position: relative;
 	width: auto;
@@ -96,38 +94,41 @@ nav a {
 	color: #fff;
 	z-index: 2000;
 }
+
 nav a:hover, nav a:active, nav a.active {
 	background: #fff;
 	cursor: pointer;
 	color: #000;
 }
-@media (max-width:800px) {
-    main {
-        overflow-x: hidden;
-    }
-}
+
 nav.stickynav {
 	position: fixed;
 	top: 0px;
     left: 0px;
 	z-index: 2000;
 }
+
 nav.stickynav + div {
 	height: 42px;
 }
+
 h2 {
 	font-family: Montserrat;
 }
+
 .menu, .hamburger {
 	display: none;
 }
+
 @media (max-width: 500px) {
+	
 	.heading span {
 		margin-left: 0px !important;
 		width: 100vw !important;
 		background: #000 !important;
 		color: #fff !important;
 	}
+	
 	nav {
 		position: relative;
 		display: block;
@@ -138,16 +139,19 @@ h2 {
 		color: #fff;
 		transition: all .2s ease-in-out;
 	}
+	
 	nav.open {
 		height: 214px !important;
 		margin-bottom: -164px !important;
 	}
+	
 	nav a {
 		display: block;
 		width: 100vw;
 		background: #000;
 		color: #fff;
 	}
+	
 	nav a.active {
 		position: absolute;
 		top: 0;
@@ -156,9 +160,11 @@ h2 {
 		color: #fff;
 		z-index: 4000;
 	}
+	
 	.menu {
 		display: block;
 	}
+	
 	.hamburger {
 		display: block;
 		position: absolute;
@@ -169,6 +175,7 @@ h2 {
 		text-align: right;
 		cursor: pointer;
 	}
+	
 	.hamburger > div {
 		position: absolute;
 		font-size: 24px;
@@ -179,6 +186,7 @@ h2 {
 		transform: rotate(90deg);
 		transition: all .2s ease-in-out;
 	}
+	
 	nav.open .hamburger > div {
 		transform: rotate(-90deg);
 	}
@@ -191,26 +199,32 @@ h2 {
 	width: 100%;
 	z-index: 1;
 }
+
 #recordgallery > div {
 	text-align: center;
 }
+
 header {
 	margin: 0px;
 	padding: 8px;
 }
+
 .platte {
 	position: relative;
 	display: inline-block;
 	width: 32%;
 	min-width: 230px;
+	padding: 32px 0px;
 	text-align: center;
 	vertical-align: text-top;
 	z-index: 0;
 	transition: all .1s ease-in-out;
 }
+
 .platte * {
 	transition: all .1s ease-in-out;
 }
+
 .platte.card {
 	position: fixed;
 	display: block;
@@ -221,12 +235,14 @@ header {
 	vertical-align: top;
 	overflow: hidden;
 }
-.platte.card .closebtn {
-	display: block;
+
+.closebtn, .platte p, .platte .vid {
+	display: none;
+	opacity: 0;
 }
+
 .closebtn {
 	position: absolute;
-	display: none;
 	bottom: 42px;
 	right: 42px;
 	padding: 16px;
@@ -234,49 +250,64 @@ header {
 	border: none;
 	font-size: 16px;
 }
+
+.platte.card .closebtn, .platte.card p, .platte.card .vid {
+	display: block;
+}
+
+.platte.card.expanded .closebtn, .platte.card.expanded p, .platte.card.expanded .vid {
+	opacity: 1;
+}
+
 .closebtn:hover {
 	cursor: pointer;
 	background: #eee;
 }
+
 .platte.card .cover {
-	margin: 42px;
 	display: inline-block;
-	float: left;
 }
+
 .platte.card .cover:after {
 	left: 0px;
 }
+
 .platte.card .desc {
 	display: inline-block;
 	font-size: 32px;
-	margin: 42px;
-	padding: 0px;
-	float: left;
-	width: auto;
+	margin-left: 42px;
+	vertical-align: top;
 }
+
 .desc {
 	display: block;
-	width: 100%;
 }
-.artist,
-.album {
+
+.platte.card.expanded .desc {
+	width: calc(100% - 210px);
+}
+
+.artist, .album {
 	display: block;
 }
+
 .artist {
 	font-weight: bold;
 	margin: 4px;
 }
+
 .album {
 	font-style: italic;
-	padding-bottom: 20px;
 }
+
 .cover {
 	position: relative;
 	height: 160px;
 	width: 160px;
-	margin: 32px auto 8px;
+	margin: 0px auto 8px;
 	box-shadow: 0px 0px 4px 0px;
 }
+
 .cover:after {
 	position: absolute;
 	content: "";
@@ -289,27 +320,34 @@ header {
 	box-shadow: 0px 0px 2px 0px;
 	transition: all .2s ease-in-out;
 }
+
 .platte:hover:not(.card) .cover:after {
 	left: 26px;
 }
+
 .platte:hover:not(.card) {
 	cursor: pointer;
 	background: #eee;
 }
+
 .platte.card.expanded {
 	box-shadow: 0px 0px 160px 0px;
 	left: 84px !important;
 	top: 84px !important;
-	width: calc(100% - 168px) !important;
-	height: calc(100% - 168px) !important;
+	width: calc(100% - 252px) !important;
+	height: calc(100% - 252px) !important;
+	padding: 42px;
+	overflow-y: scroll;
 }
+
 @media (max-width: 500px) {
 	.platte.card.expanded {
 		left: 21px !important;
 		top: 21px !important;
-		width: calc(100% - 42px) !important;
-		height: calc(100% - 42px) !important;
+		width: calc(100% - 126px) !important;
+		height: calc(100% - 126px) !important;
 	}
+	
 	.platte.card.expanded .desc {
 		font-size: 24px;
 	}
@@ -334,11 +372,13 @@ header {
 	border: 4px solid black;
 	border-radius: 16px;
 }
+
 @media (max-width: 800px) {
     #logo {
         font-size: 14vw;
     }
 }
+
 #logo .dot {
 	position: absolute;
 	margin: 8px;
@@ -347,15 +387,19 @@ header {
 	background: #000;
 	border-radius: 4px;
 }
+
 #logo .dot.t {
 	top: 0px;
 }
+
 #logo .dot.b {
 	bottom: 0px;
 }
+
 #logo .dot.l {
 	left: 0px;
 }
+
 #logo .dot.r {
 	right: 0px;
 }
@@ -369,6 +413,7 @@ img[src="img/store.jpg"] {
 	display: inline-block;
 	margin: auto;
 }
+
 #about p {
 	display: inline-block;
 	width: calc(49% - 16px);
@@ -377,20 +422,24 @@ img[src="img/store.jpg"] {
 	margin: auto;
 	text-align: justify;
 }
+
 @media (max-width: 600px) {
 	img[src="img/store.jpg"] {
 		width: 100%;
 	}
+	
 	#about p {
 		width: calc(100% - 32px);
 		padding: 16px;
 	}
 }
+
 .persons {
 	padding-top: 42px;
 	width: 100%;
 	text-align: center;
 }
+
 .persons > div {
 	width: 32%;
 	min-width: 230px;
@@ -398,25 +447,29 @@ img[src="img/store.jpg"] {
 	display: inline-block;
 	height: auto;
 }
+
 .persons img {
 	height: 80%;
 	width: 80%;
 	border-radius: 50%;
 	margin: 20px;
 }
-#searchbutton {
+
+.bigbutton {
 	text-align: center;
 	background: #000;
 	color: #fff;
 	display: block;
-	width: 400px;
-	margin: auto;
+	width: 80%;
+	max-width: 400px;
+	margin: 32px auto;
 	font-size: 24px;
 	padding: 20px;
 	cursor: pointer;
 }
+
 .content {
-	padding: 84px 42px;
+	padding: 84px 42px 42px;
 }
 
 footer .content {
@@ -424,6 +477,7 @@ footer .content {
 }
 
 h1 {
+	margin: -42px 0px 42px;
 	text-align: center;
 }
 
@@ -437,6 +491,7 @@ h1 {
 	display: block;
 	height: auto;
 }
+
 #overlay {
 	background: #fff;
 	position: fixed;
@@ -450,6 +505,7 @@ h1 {
 	line-height: 100vh;
 	transition: all .4s ease-in-out;
 }
+
 #overlay.done {
 	top: -100vh;
 }

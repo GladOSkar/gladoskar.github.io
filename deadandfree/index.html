@@ -19,7 +19,7 @@
 					<div class="dot b r"></div>
 				</div>
 			</header>
-			<nav>
+			<nav class="heading">
 				<div class="hamburger" onclick="foldnav(this)">
 					<div>|||</div>
 				</div>
@@ -32,8 +32,8 @@
 			<div></div>
 			<section id="news">
 				<div class="content">
-		   			<h1><script>document.write(lang.sale)</script></h1>
-		   			<p><script>document.write(lang.saletext)</script></p>
+		   			<h1><script>document.write(lang.newsh)</script></h1>
+		   			<p><script>document.write(lang.newstext)</script></p>
 				</div>
 			</section>
 			<section id="records" class="opnavanchor">
@@ -43,14 +43,19 @@
 				<div class="content">
 					<div id="recordgallery">
 						<div id="lieblingsplatten">
-							<h2>LIEBLINGSPLATTEN</h2>
+							<h2><script>document.write(lang.favrecords)</script></h2>
 						</div>
-						<div id="lieblingssongs">
-							<h2>LIEBLINGSSONGS</h2>
-						</div>
+						<!--<div id="lieblingssongs">
+							<h2><script>document.write(lang.favsongs)</script></h2>
+						</div>-->
 					</div>
-					<div id="searchbutton" onclick="window.open('search.html');">
-						<script>document.write(lang.gosearch)</script>
+					<div>
+						<a class="bigbutton" target="_blank" href="search.html">
+							<script>document.write(lang.gosearch)</script>
+						</a>
+						<a class="bigbutton" target="_blank" href="./NEUHEITEN WOCHE __.pdf">
+							<script>document.write(lang.newstuffpdf)</script>
+						</a>
 					</div>
 				</div>
 			</section>
@@ -70,12 +75,12 @@
 						</div>
 						<div>
 							<img src="http://www.collegesoccerpanels.com/wp-content/uploads/2014/04/headshot_female_290x281.png">
-							<span>Katharina</span>
-						</div>
+							<span>Ina</span>
+						</div><!--
 						<div>
 							<img src="http://www.collegesoccerpanels.com/wp-content/uploads/2014/04/headshot_male_290x281.png">
 							<span>Tim</span>
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</section>

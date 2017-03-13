@@ -12,7 +12,7 @@
 
 <body>
 	<main>
-		<input id="searchfield" placeholder="Suche..." type="text" onkeyup="if(this.value.length > 2) {search(this.value)}" onchange="search(this.value)">
+		<input id="searchfield" placeholder="Suche..." type="text" onkeyup="if(this.value.length > 2) {search(this.value)} else {search('')}" onchange="search(this.value)">
 		<ul id="resultlist"></ul>
 		<div id="overlay">Loading &amp; Indexing Database...</div>
 	</main>

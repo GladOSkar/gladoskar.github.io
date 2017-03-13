@@ -24,29 +24,31 @@ function expand(platte) {							//opening animation for cards
 function retract(platte) { //closing animation
 	card = document.querySelector("body > .platte.card"); //find open card
 	card.classList.remove("expanded");
-	//card.classList.remove("card");
 	card.style.top = oldRect.top + "px"; //move back to previously saved position
 	card.style.left = oldRect.left + "px";
 	card.style.height = oldRect.height + "px"; //set back to previously saved dimensions
 	card.style.width = oldRect.width + "px";
 	setTimeout(function() {
-		document.body.removeChild(card); //delete clone231
+		document.body.removeChild(card); //delete clone
 	}, 410);
 }
 
 function paintPlatte(info, parent) {
-	var html = [
+	parent.innerHTML += [
 		"<div class=\"platte\" onclick=\"expand(this)\">\n<div class=\"cover\" style=\"background:url(",
 		info.url,
 		");\"></div>\n<div class=\"desc\">\n<span class=\"artist\">",
 		info.artist,
 		"</span>\n<span class=\"album\">",
 		info.album,
-		"</span>\n</div>\n<button class=\"closebtn\" onclick=\"retract(this)\">",
+		"</span>\n</div>\n<p>",
+		info.text,
+		"</p>\n<iframe class=\"vid\" width=\"560\" height=\"315\" src=\"",
+		info.vid,
+		"\" frameborder=\"0\" allowfullscreen></iframe>\n<button class=\"closebtn\" onclick=\"retract(this)\">",
 		lang.close,
 		"</button>\n</div>\n"
 	].join("");
-	parent.innerHTML += html;
 }
 
 function paintPlatten() { //will add the necessary html for every record into its respective container

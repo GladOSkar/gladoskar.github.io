@@ -1,3 +1,20 @@
+body {
+	background: #559fea;
+	margin: 0px;
+	overflow-x: hidden;
+	font-family: Montserrat;
+}
+
+main {
+	width: 100%;
+	max-width: 800px;
+	margin: auto;
+	box-shadow: 0 0 16px 0;
+	background: #fff;
+	min-height: calc(100vh - 84px);
+	padding: 42px;
+}
+
 #overlay {
 	background: #fff;
 	position: fixed;

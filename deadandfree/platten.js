@@ -1,3 +1,53 @@
+var database = {
+	"lieblingsplatten": [
+		{
+			"url": "img/AlbumArt/sampha.png",
+			"artist": "Sampha",
+			"album": "Process",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/_NSuIYwBxu4"
+		},
+		{
+			"url": "img/AlbumArt/fink.png",
+			"artist": "Fink",
+			"album": "Fink's Sunday Night Blues Club, Vol. 1",
+			"text": "In Vinyl leider erst ab dem 14.4.2017 erhältlich",
+			"vid": "https://www.youtube.com/embed/j63QBuIA4wM"
+		},
+		{
+			"url": "img/AlbumArt/nikkilane.png",
+			"artist": "Nikki Lane",
+			"album": "Highway Queen",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/zcvQL8_ZP20"
+		},
+		{
+			"url": "img/AlbumArt/michaelkiwanuka.png",
+			"artist": "Michael Kiwanuka",
+			"album": "Love And Hate",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/aMZ4QL0orw0"
+		},
+		{
+			"url": "img/AlbumArt/leonardcohen.png",
+			"artist": "Leonard Cohen",
+			"album": "You Want It Darker",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/v0nmHymgM7Y"
+		},
+		{
+			"url": "img/AlbumArt/lutherdickinson.png",
+			"artist": "Luther Dickinson",
+			"album": "Blues & Ballads (A Folksinger's Songbook)",
+			"text": "",
+			"vid": "https://www.youtube.com/embed/8KWk-Dso3HA"
+		}
+	],
+	"lieblingssongs": [
+
+	]
+}
+
 var oldRect;	//stores the previous position of the open card for the closing animation
 
 function expand(platte) {							//opening animation for cards

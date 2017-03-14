@@ -127,14 +127,14 @@ h2 {
 }
 
 @media (max-width: 500px) {
-	
+
 	.heading span {
 		margin-left: 0px !important;
 		width: 100vw !important;
 		background: #000 !important;
 		color: #fff !important;
 	}
-	
+
 	nav {
 		position: relative;
 		display: block;
@@ -145,19 +145,19 @@ h2 {
 		color: #fff;
 		transition: all .2s ease-in-out;
 	}
-	
+
 	nav.open {
 		height: 214px !important;
 		margin-bottom: -164px !important;
 	}
-	
+
 	nav a {
 		display: block;
 		width: 100vw;
 		background: #000;
 		color: #fff;
 	}
-	
+
 	nav a.active {
 		position: absolute;
 		top: 0;
@@ -166,11 +166,11 @@ h2 {
 		color: #fff;
 		z-index: 4000;
 	}
-	
+
 	.menu {
 		display: block;
 	}
-	
+
 	.hamburger {
 		display: block;
 		position: absolute;
@@ -181,7 +181,7 @@ h2 {
 		text-align: right;
 		cursor: pointer;
 	}
-	
+
 	.hamburger > div {
 		position: absolute;
 		font-size: 24px;
@@ -192,7 +192,7 @@ h2 {
 		transform: rotate(90deg);
 		transition: all .2s ease-in-out;
 	}
-	
+
 	nav.open .hamburger > div {
 		transform: rotate(-90deg);
 	}
@@ -213,6 +213,12 @@ h2 {
 header {
 	margin: 0px;
 	padding: 8px;
+}
+
+.imprint header {
+	background: #000;
+	color: #fff;
+	height: 120px;
 }
 
 .platte {
@@ -369,7 +375,7 @@ header {
 		width: calc(100% - 126px) !important;
 		height: calc(100% - 126px) !important;
 	}
-	
+
 	.platte .vid {
 		height: 40vw;
 	}
@@ -478,6 +484,7 @@ header {
 	width: auto;
 	overflow: visible;
 	transition: all 1.6s ease-in-out;
+	font-size: 0;
 }
 
 .slider .buttons button {

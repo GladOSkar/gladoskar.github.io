@@ -1,53 +1,3 @@
-var database = {
-	"lieblingsplatten": [
-		{
-			"url": "img/AlbumArt/sampha.png",
-			"artist": "Sampha",
-			"album": "Process",
-			"text": "",
-			"vid": "https://www.youtube.com/embed/_NSuIYwBxu4"
-		},
-		{
-			"url": "img/AlbumArt/fink.png",
-			"artist": "Fink",
-			"album": "Fink's Sunday Night Blues Club, Vol. 1",
-			"text": "In Vinyl leider erst ab dem 14.4.2017 erhältlich",
-			"vid": "https://www.youtube.com/embed/j63QBuIA4wM"
-		},
-		{
-			"url": "img/AlbumArt/nikkilane.png",
-			"artist": "Nikki Lane",
-			"album": "Highway Queen",
-			"text": "",
-			"vid": "https://www.youtube.com/embed/zcvQL8_ZP20"
-		},
-		{
-			"url": "img/AlbumArt/michaelkiwanuka.png",
-			"artist": "Michael Kiwanuka",
-			"album": "Love And Hate",
-			"text": "",
-			"vid": "https://www.youtube.com/embed/aMZ4QL0orw0"
-		},
-		{
-			"url": "img/AlbumArt/leonardcohen.png",
-			"artist": "Leonard Cohen",
-			"album": "You Want It Darker",
-			"text": "",
-			"vid": "https://www.youtube.com/embed/v0nmHymgM7Y"
-		},
-		{
-			"url": "img/AlbumArt/lutherdickinson.png",
-			"artist": "Luther Dickinson",
-			"album": "Blues & Ballads (A Folksinger's Songbook)",
-			"text": "",
-			"vid": "https://www.youtube.com/embed/8KWk-Dso3HA"
-		}
-	],
-	"lieblingssongs": [
-		
-	]
-}
-
 var langen = {
 	id: "en",
 	menu: "MENU",
@@ -139,10 +89,10 @@ function scrollleft() {
 
 function getOffset(el) {
 	var top, left, rect = el.getBoundingClientRect();
-	
+
 	top = rect.top + scrolltop();
 	left = rect.left + scrollleft();
-	
+
 	return {top: top, left:left};
 }
 
@@ -160,7 +110,7 @@ function adjustHeadings() {			//Adjust section Headings' CSS to make them be und
 
 	var headEls = document.querySelectorAll(".heading span"),
 		navWidth = document.querySelector("nav").offsetWidth;
-	
+
 	for (var i = 0; i < headEls.length; i++) {
 		headEls[i].style.marginLeft = navElOffsets[i] + "px";
 		headEls[i].style.width = navElWidths[i] + "px";
@@ -174,9 +124,9 @@ var headerheight = 0;
 
 function realign() {
 	adjustHeadings(); //Adjust section Headings' CSS to make them be underneath their nav counterpart
-	
+
 	headerheight = document.querySelector("header").offsetHeight;
-	
+
 	for (var i = 0; i < opnas.length; i++) {
 		opnaoffsets[i + 1] = getOffset(opnas[i]).top;
 	}
@@ -194,7 +144,7 @@ window.onscroll = function() {
 		document.querySelector("nav").classList.remove("stickynav");
 		navsticks = 0;
 	};
-	
+
 	if (scrolltop() + 21 != opnaoffsets[activeopnaindex]) {
 		if (scrolltop() + 21 < opnaoffsets[activeopnaindex]) {
 			activeopnaindex--;
@@ -213,12 +163,12 @@ window.onscroll = function() {
 var sled, sliderpos = 0, slidertotal;
 
 window.onload = function() {
-	
+
 	opnas = document.body.querySelectorAll(".opnavanchor");
 	realign();
-	
+
 	paintPlatten();
-	
+
 	realign();
 
 	setInterval(function(){
@@ -250,12 +200,12 @@ function slidergoto(dest) {
 }
 
 function smoothScroll(did) { //scrools smoothly to the top of the element with ID "did" (="destinationID")
-	
+
 	try { document.body.querySelector("nav.open").classList.remove("open"); } catch(err) {};
-	
+
 	try { document.body.querySelector("nav a.active").classList.remove("active"); } catch(err) {};
 	document.querySelector("." + did + "link").classList.add("active");  //make the clicked nav-Element stay visually active
-	
+
 	var start = scrolltop(), //get start position (current scroll position)
 		dest = document.getElementById(did).offsetTop; //get destination position (absolute top of dest element)
 	if (dest > (document.body.offsetHeight - window.innerHeight)) { //if the destination view is past the end of the page, only move to the end of the page, so the animation does not end abruptly
@@ -263,7 +213,7 @@ function smoothScroll(did) { //scrools smoothly to the top of the element with I
 	}
 	var prg = 0, //time progress in s
 		diff = (dest - start); //distance to move
-	
+
 	var scroll = setInterval(function () { //loop every .02 seconds
 		prg += 0.02; //increment time by .02 seconds
 		window.scrollTo(0, start + (easeinout(prg) * diff)); //scroll to position for current time progress (0 is for horizontal scrolling, position = start + progress * distance)

@@ -43,11 +43,9 @@ function paintPlatte(info, parent) {
 		info.album,
 		"</span>\n</div>\n<p>",
 		info.text,
-		"</p>\n<iframe class=\"vid\" width=\"560\" height=\"315\" src=\"",
+		"</p>\n<iframe class=\"vid\" src=\"",
 		info.vid,
-		"\" frameborder=\"0\" allowfullscreen></iframe>\n<button class=\"closebtn\" onclick=\"retract(this)\">",
-		lang.close,
-		"</button>\n</div>\n"
+		"\" frameborder=\"0\" allowfullscreen></iframe>\n<button class=\"closebtn\" onclick=\"retract(this)\">&times;</button>\n</div>\n"
 	].join("");
 }
 

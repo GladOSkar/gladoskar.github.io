@@ -6,14 +6,16 @@
 	<meta charset="utf-8">
 	<meta name="theme-color" content="#000">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link href="style.css" rel="stylesheet" type="text/css">
+	<link href="search.css" rel="stylesheet" type="text/css">
 	<script src="lib/lunr.min.js"></script>
 </head>
 
 <body>
 	<main>
-		<input id="searchfield" placeholder="Suche..." type="text" onkeyup="if(this.value.length > 2) {search(this.value)} else {search('')}" onchange="search(this.value)">
-		<ul id="resultlist"></ul>
+		<input id="searchfield" placeholder="Suche..." type="text" onkeyup="search(this.value)" onchange="search(this.value)">
+		<p>Bitte geben Sie mind. 3 Zeichen ein.</p>
+		<table id="resultlist">
+		</table>
 		<div id="overlay">Loading &amp; Indexing Database...</div>
 	</main>
 	<script>
@@ -53,15 +55,31 @@
 		xmlhttp.send();
 		
 		function createresult(obj) {
-			var el = document.createElement("li");
-			el.innerHTML = [obj.ARTIST, obj.TITLE, obj.EUR + "€ <br><br>"].join("<br>");
+			var el = document.createElement("tr");
+			el.innerHTML = "<td>" + [
+				obj.ARTIST,
+				obj.TITLE,
+				obj.FMT,
+				obj.EUR + "€"
+			].join("</td><td>") + "</td>";
 			return el;
 		}
 
 		function search(keyword) {
-			var resultlist = document.getElementById("resultlist")
-			resultlist.innerHTML = "";
-			var results = index.search(keyword);
+			var resultlist = document.getElementById("resultlist");
+			resultlist.innerHTML = "<tr><th>ARTIST</th><th>ALBUM</th><th>FORMAT</th><th>PREIS</th></tr>";
+			var results = [];
+
+			if(keyword.length > 2) {
+				results = index.search(keyword);
+				resultlist.style.display = "block";
+				resultlist.previousElementSibling.style.display = "none";
+			} else {
+				results = [];
+				resultlist.style.display = "none";
+				resultlist.previousElementSibling.style.display = "block";
+			}
+
 			for (var i = 0; i < results.length; i++) {
 				resultlist.appendChild(createresult(db[results[i].ref]));
 			}

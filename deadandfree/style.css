@@ -2,14 +2,11 @@
 @import url(https://fonts.googleapis.com/css?family=Limelight);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-* {
-	font-family: Montserrat;
-}
-
 body {
 	background: #559fea;
 	margin: 0px;
 	overflow-x: hidden;
+	font-family: Montserrat;
 }
 
 a {
@@ -33,7 +30,7 @@ main {
 	min-height: 100vh;
 }
 
-footer, div.header {
+footer {
 	width: 100vw;
 	height: auto;
 	margin-left: 50%;
@@ -42,9 +39,18 @@ footer, div.header {
 	transform: translateX(-50%);
 }
 
-footer > section, div.header > section {
+footer > section {
 	max-width: 800px;
 	margin: auto;
+}
+
+.content {
+	padding: 42px;
+	text-align: center;
+}
+
+h1 {
+	margin: 0px 0px 42px;
 }
 
 /* ############################################################################################### */
@@ -237,18 +243,30 @@ header {
 }
 
 .closebtn, .platte p, .platte .vid {
+	margin-bottom: 42px;
 	display: none;
 	opacity: 0;
 }
 
+.platte .vid {
+	width: 100%;
+	min-width: 0px;
+	max-width: 560px;
+	height: 37vw;
+	max-height: 318px;
+	margin-bottom: 0px;
+}
+
 .closebtn {
 	position: absolute;
-	bottom: 42px;
+	top: 42px;
 	right: 42px;
-	padding: 16px;
-	background: #fff;
+	margin-top: -24px;
+	margin-right: -24px;
+	padding: 0px 16px;
 	border: none;
-	font-size: 16px;
+	background: none;
+	font-size: 42px;
 }
 
 .platte.card .closebtn, .platte.card p, .platte.card .vid {
@@ -266,6 +284,8 @@ header {
 
 .platte.card .cover {
 	display: inline-block;
+	margin-right: 42px;
+	margin-bottom: 42px;
 }
 
 .platte.card .cover:after {
@@ -274,9 +294,9 @@ header {
 
 .platte.card .desc {
 	display: inline-block;
-	font-size: 32px;
-	margin-left: 42px;
+	font-size: 24px;
 	vertical-align: top;
+	margin-bottom: 42px;
 }
 
 .desc {
@@ -285,6 +305,8 @@ header {
 
 .platte.card.expanded .desc {
 	width: calc(100% - 210px);
+	max-width: 500px;
+	min-width: 160px;
 }
 
 .artist, .album {
@@ -337,7 +359,7 @@ header {
 	width: calc(100% - 252px) !important;
 	height: calc(100% - 252px) !important;
 	padding: 42px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 @media (max-width: 500px) {
@@ -348,12 +370,23 @@ header {
 		height: calc(100% - 126px) !important;
 	}
 	
-	.platte.card.expanded .desc {
-		font-size: 24px;
+	.platte .vid {
+		height: 40vw;
 	}
 }
 
-
+.bigbutton {
+	text-align: center;
+	background: #000;
+	color: #fff;
+	display: block;
+	width: 80%;
+	max-width: 400px;
+	margin: 32px auto;
+	font-size: 24px;
+	padding: 20px;
+	cursor: pointer;
+}
 
 /* ############################################################################################### */
 
@@ -406,43 +439,19 @@ header {
 
 /* ############################################################################################### */
 
-img[src="img/store.jpg"] {
-	vertical-align: top;
-	width: 49%;
-	min-width: 230px;
-	display: inline-block;
-	margin: auto;
-}
-
 #about p {
-	display: inline-block;
-	width: calc(49% - 16px);
-	padding: 16px 0px 16px 16px;
-	min-width: 230px;
-	margin: auto;
-	text-align: justify;
-}
-
-@media (max-width: 600px) {
-	img[src="img/store.jpg"] {
-		width: 100%;
-	}
-	
-	#about p {
-		width: calc(100% - 32px);
-		padding: 16px;
-	}
+	text-align: center;
+	margin-bottom: 42px;
 }
 
 .persons {
-	padding-top: 42px;
-	width: 100%;
 	text-align: center;
+	margin-bottom: 42px;
 }
 
 .persons > div {
 	width: 32%;
-	min-width: 230px;
+	min-width: 240px;
 	height: auto;
 	display: inline-block;
 	height: auto;
@@ -455,75 +464,43 @@ img[src="img/store.jpg"] {
 	margin: 20px;
 }
 
-.bigbutton {
-	text-align: center;
+.slider img {
+	width: calc(100vw - 84px);
+	max-width: 716px;
+}
+
+.slider {
+	overflow-x: hidden;
+}
+
+.slider .sled {
+	white-space: nowrap;
+	width: auto;
+	overflow: visible;
+	transition: all 1.6s ease-in-out;
+}
+
+.slider .buttons button {
+	margin: 16px 0px 0px;
+	background: #fff;
+	border: 4px solid black;
+	height: 32px;
+	width: 32px;
+	font-weight: bold;
+	transition: all 1.6s ease-in-out;
+}
+
+.slider .buttons button.active {
 	background: #000;
 	color: #fff;
-	display: block;
-	width: 80%;
-	max-width: 400px;
-	margin: 32px auto;
-	font-size: 24px;
-	padding: 20px;
-	cursor: pointer;
 }
 
-.content {
-	padding: 84px 42px 42px;
-}
+/* ######## */
 
-footer .content {
-	padding: 42px;
-}
-
-h1 {
-	margin: -42px 0px 42px;
-	text-align: center;
-}
-
-#news p {
-	text-align: center;
-}
-
-#about .content > div {
-	position: relative;
-	margin: auto;
-	display: block;
-	height: auto;
-}
-
-#overlay {
-	background: #fff;
-	position: fixed;
-	height: 100vh;
-	width: 100vw;
-	top: 0;
-	left: 0;
-	text-align: center;
-	padding: 0;
-	vertical-align: middle;
-	line-height: 100vh;
-	transition: all .4s ease-in-out;
-}
-
-#overlay.done {
-	top: -100vh;
-}
-
-#searchfield {
-	display: block;
-	position: relative;
-	width: 64%;
-	margin: 42px auto 42px;
-	border: 4px solid #000;
-	padding: 8px;
-	font-size: 32px;
-}
-
-#resultlist {
-	display: block;
-	position: relative;
-	list-style: none;
-	width: 100%;
-	margin: auto;
+#location > div > div > div {
+	vertical-align: top;
+	display: inline-block;
+	width: calc(50% - 8px);
+	min-width: 200px;
+	margin-bottom: 42px;
 }

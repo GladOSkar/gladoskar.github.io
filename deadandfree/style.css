@@ -65,8 +65,8 @@ h1 {
 	height: 42px;
 	font-size: 20px;
 	transform: translateX(-50%);
-	padding-left: calc((1400px - 770px)/2);
-	padding-right: calc((1400px - 770px)/2);
+	padding-left: calc((100vw - 770px)/2);
+	padding-right: calc((100vw - 770px)/2);
 }
 
 .heading span {

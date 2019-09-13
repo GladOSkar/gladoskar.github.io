@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/gladoskar
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://oskar.winkels.berlin
+  * I am gladoskar (https://keybase.io/gladoskar) on keybase.
+  * I have a public key ASAIkQquNxYVq8gqqXNjIEoeh3mtRwZMb4-rOBrh66_6PQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120b442e5bd8ea65d398ca3f667a2f435238f515201ad9357b91cef454620ad9c3c0a",
+      "host": "keybase.io",
+      "kid": "012008910aae371615abc82aa97363204a1e8779ad47064c6f8fab381ae1ebaffa3d0a",
+      "uid": "e61ae39aea372720b84edddadd9f3519",
+      "username": "gladoskar"
+    },
+    "merkle_root": {
+      "ctime": 1568379990,
+      "hash": "cfab885b0c5e217c09d0c4e67848806694cb5b4563555f68e80adfadc43f5266ff65794134030e32d3e3a2440d3c5527b4b88804075d8107b87f4d027d9c4a2d",
+      "hash_meta": "5ac237a22e6da6cfc039e5632aa87c41619f8699ddb436808e84727cfaae37a0",
+      "seqno": 7153146
+    },
+    "service": {
+      "entropy": "nfqBQ8K+vVUpTcqphiE83qA+",
+      "hostname": "oskar.winkels.berlin",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.3.2"
+  },
+  "ctime": 1568380009,
+  "expire_in": 504576000,
+  "prev": "8d3ff1bd9813c40f86e44e387df3aff0b4314e3c970eb932884c169c0e4b30ca",
+  "seqno": 20,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgCJEKrjcWFavIKqlzYyBKHod5rUcGTG+Pqzga4euv+j0Kp3BheWxvYWTESpcCFMQgjT/xvZgTxA+G5E44ffOv8LQxTjyXDrkyiEwWnA5LMMrEIBDEQBaa6oHlSxH7POyThbqagJWo+cmJOh5sujFNaOsSAgHCo3NpZ8RAWQQeG5rIZ/LMNc3JWt6HSpOtqkuX8iUqfc0p9TRtoRI/VevGdi3P2WvOTv/B+i/U2Jyx8p2dXb5qTLuKqg5ADqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEILpisk1L0QytAGRcVLuN04KS+ykIj7OwgqyIIpzwbHA+o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/gladoskar
+
+==================================================================

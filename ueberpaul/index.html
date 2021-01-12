@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Flash Test</title>
+	</head>
+	<body style="text-align: center">
+		<script>
+			window.RufflePlayer = window.RufflePlayer || {};
+			window.addEventListener("load", (event) => {
+				const ruffle = window.RufflePlayer.newest();
+				const player = ruffle.createPlayer();
+				document.body.appendChild(player);
+				player.style.height = '90vh'
+				player.style.width = '90vw'
+				player.load("myApp.swf");
+			});
+		</script>
+		<script src="ruffle/ruffle.js"></script>
+		DISCLAIMER: NOT MY/OUR CONTENT. JUST AN ARCHIVAL ATTEMPT OF http://panopti.com.onreact.com/swf/
+	</body>
+</html>

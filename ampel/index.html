@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="style.css" rel="stylesheet" type="text/css">
+
+		<title>AutoFa Ampel</title>
+
+		<style>
+* {
+	box-sizing: border-box;
+}
+html, body {
+	margin: 0;
+	padding: 0;
+}
+main {
+	background: #444;
+	height: 80vh;
+	width: 30vh;
+	margin: auto;
+	margin-top: 5vh;
+	padding: 5vh;
+	border-radius: 5vh;
+	outline: 4px solid #222;
+}
+footer {
+	background: #888;
+	height: 15vh;
+	width: 10vh;
+	margin: auto;
+}
+section {
+	height: 20vh;
+	width: 20vh;
+	border-radius: 10vh;
+	margin-bottom: 5vh;
+	transition: .5s ease-in-out filter;
+	outline: 4px solid #222;
+}
+section:hover {
+	cursor: pointer;
+}
+section:active {
+	cursor: wait;
+}
+section:not(.active) {
+	filter: brightness(30%);
+}
+#red {background: red}
+#yellow {background: yellow}
+#green {background: green}
+		</style>
+
+	</head>
+
+	<body>
+
+		<main>
+			<section id=red class=active></section>
+			<section id=yellow></section>
+			<section id=green></section>
+		</main>
+		<footer></footer>
+
+	</body>
+
+	<script>
+		var state = 'red';
+		const states = {
+			'red': {
+				'red': [[red]],
+				'yellow': [[red,yellow]],
+				'green': [[red,yellow],[green]]
+			},
+			'yellow': {
+				'red': [[red]],
+				'yellow': [[yellow]],
+				'green': [[green]]
+			},
+			'green': {
+				'red': [[yellow],[red]],
+				'yellow': [[yellow]],
+				'green': [[green]]
+			}
+		};
+		function resetLights() {
+			red.classList.remove("active");
+			yellow.classList.remove("active");
+			green.classList.remove("active");
+		}
+		function doSteps(steps, color) {
+			console.log("doSteps 1", steps);
+			step = steps.shift();
+			console.log("doSteps 2", step);
+			if (!step) return;
+			resetLights();
+			console.log("doSteps 3", "reset");
+			for (light of step)
+				light.classList.add("active");
+			console.log("doSteps 4", steps);
+			if (steps.length == 0) {
+				state = color;
+				return;
+			}
+			console.log("doSteps", "next");
+			setTimeout(() => doSteps(steps, color), 1000);
+		}
+		function gotoLight(color) {
+			console.log("gotoLight 1", color);
+			var steps = states[state][color].slice(); //clone
+			console.log("gotoLight 2", steps);
+			doSteps(steps, color)
+		}
+		function changeLight(event) {
+			setTimeout(() => gotoLight(event.target.id), 333);
+		}
+		var lights = document.querySelectorAll("section");
+		for (light of lights) {
+			light.addEventListener("click", changeLight);
+		}
+	</script>
+
+</html>
